@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://soap.logistics.alps.soa.inatel.edu.br" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://soap.logistics.alps.soa.inatel.edu.br" xmlns:intf="http://soap.logistics.alps.soa.inatel.edu.br" xmlns:tns1="http://model.logistics.alps.soa.inatel.edu.br" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://soap.logistics.alps.soa.inatel.edu.br" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://model.logistics.alps.soa.inatel.edu.br"/>
+   <element name="getDeliveriesToDeliver">
+    <complexType/>
+   </element>
+   <element name="getDeliveriesToDeliverResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getDeliveriesToDeliverReturn" type="tns1:Delivery"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_tns1_DeliveryItem">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:DeliveryItem"/>
+    </sequence>
+   </complexType>
+   <element name="getDeliveryByOrderId">
+    <complexType>
+     <sequence>
+      <element name="orderId" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getDeliveryByOrderIdResponse">
+    <complexType>
+     <sequence>
+      <element name="getDeliveryByOrderIdReturn" type="tns1:Delivery"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="insertDelivery">
+    <complexType>
+     <sequence>
+      <element name="orderId" type="xsd:long"/>
+      <element name="clientId" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="insertDeliveryResponse">
+    <complexType>
+     <sequence>
+      <element name="insertDeliveryReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getDeliveryById">
+    <complexType>
+     <sequence>
+      <element name="deliveryId" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getDeliveryByIdResponse">
+    <complexType>
+     <sequence>
+      <element name="getDeliveryByIdReturn" type="tns1:Delivery"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteDelivery">
+    <complexType>
+     <sequence>
+      <element name="deliveryId" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteDeliveryResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteDeliveryReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="makeDelivery">
+    <complexType>
+     <sequence>
+      <element name="deliveryId" type="xsd:long"/>
+      <element name="receiverName" type="xsd:string"/>
+      <element name="receiverCpf" type="xsd:string"/>
+      <element name="isClientReceiver" type="xsd:boolean"/>
+      <element name="deliveryMadeTime" type="xsd:dateTime"/>
+      <element name="deliveryMadeLatitude" type="xsd:double"/>
+      <element name="deliveryMadeLongitude" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="makeDeliveryResponse">
+    <complexType>
+     <sequence>
+      <element name="makeDeliveryReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getDeliveries">
+    <complexType/>
+   </element>
+   <element name="getDeliveriesResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getDeliveriesReturn" type="tns1:Delivery"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://model.logistics.alps.soa.inatel.edu.br" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://soap.logistics.alps.soa.inatel.edu.br"/>
+   <complexType name="DeliveryItem">
+    <sequence>
+     <element name="code" nillable="true" type="xsd:string"/>
+     <element name="color" nillable="true" type="xsd:string"/>
+     <element name="model" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+     <element name="productId" nillable="true" type="xsd:long"/>
+     <element name="quantity" nillable="true" type="xsd:double"/>
+    </sequence>
+   </complexType>
+   <complexType name="Delivery">
+    <sequence>
+     <element name="clientAddress" nillable="true" type="xsd:string"/>
+     <element name="clientCPF" nillable="true" type="xsd:string"/>
+     <element name="clientCity" nillable="true" type="xsd:string"/>
+     <element name="clientCountry" nillable="true" type="xsd:string"/>
+     <element name="clientId" nillable="true" type="xsd:long"/>
+     <element name="clientName" nillable="true" type="xsd:string"/>
+     <element name="clientState" nillable="true" type="xsd:string"/>
+     <element name="clientZip" nillable="true" type="xsd:string"/>
+     <element name="deliveryItem" nillable="true" type="impl:ArrayOf_tns1_DeliveryItem"/>
+     <element name="deliveryMadeLatitude" nillable="true" type="xsd:double"/>
+     <element name="deliveryMadeLongitude" nillable="true" type="xsd:double"/>
+     <element name="deliveryMadeTime" nillable="true" type="xsd:dateTime"/>
+     <element name="id" nillable="true" type="xsd:long"/>
+     <element name="isClientReceiver" nillable="true" type="xsd:boolean"/>
+     <element name="orderDeliveryDate" nillable="true" type="xsd:dateTime"/>
+     <element name="orderId" nillable="true" type="xsd:long"/>
+     <element name="orderNumber" nillable="true" type="xsd:int"/>
+     <element name="receiverCpf" nillable="true" type="xsd:string"/>
+     <element name="receiverName" nillable="true" type="xsd:string"/>
+     <element name="status" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getDeliveryByOrderIdRequest">
+
+      <wsdl:part element="impl:getDeliveryByOrderId" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteDeliveryRequest">
+
+      <wsdl:part element="impl:deleteDelivery" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDeliveryByIdRequest">
+
+      <wsdl:part element="impl:getDeliveryById" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDeliveriesResponse">
+
+      <wsdl:part element="impl:getDeliveriesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="makeDeliveryRequest">
+
+      <wsdl:part element="impl:makeDelivery" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="makeDeliveryResponse">
+
+      <wsdl:part element="impl:makeDeliveryResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDeliveryByIdResponse">
+
+      <wsdl:part element="impl:getDeliveryByIdResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDeliveriesToDeliverRequest">
+
+      <wsdl:part element="impl:getDeliveriesToDeliver" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="insertDeliveryRequest">
+
+      <wsdl:part element="impl:insertDelivery" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="insertDeliveryResponse">
+
+      <wsdl:part element="impl:insertDeliveryResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDeliveriesRequest">
+
+      <wsdl:part element="impl:getDeliveries" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteDeliveryResponse">
+
+      <wsdl:part element="impl:deleteDeliveryResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDeliveriesToDeliverResponse">
+
+      <wsdl:part element="impl:getDeliveriesToDeliverResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDeliveryByOrderIdResponse">
+
+      <wsdl:part element="impl:getDeliveryByOrderIdResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="LogisticsService">
+
+      <wsdl:operation name="getDeliveriesToDeliver">
+
+         <wsdl:input message="impl:getDeliveriesToDeliverRequest" name="getDeliveriesToDeliverRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getDeliveriesToDeliverResponse" name="getDeliveriesToDeliverResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDeliveryByOrderId">
+
+         <wsdl:input message="impl:getDeliveryByOrderIdRequest" name="getDeliveryByOrderIdRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getDeliveryByOrderIdResponse" name="getDeliveryByOrderIdResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="insertDelivery">
+
+         <wsdl:input message="impl:insertDeliveryRequest" name="insertDeliveryRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:insertDeliveryResponse" name="insertDeliveryResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDeliveryById">
+
+         <wsdl:input message="impl:getDeliveryByIdRequest" name="getDeliveryByIdRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getDeliveryByIdResponse" name="getDeliveryByIdResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteDelivery">
+
+         <wsdl:input message="impl:deleteDeliveryRequest" name="deleteDeliveryRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteDeliveryResponse" name="deleteDeliveryResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="makeDelivery">
+
+         <wsdl:input message="impl:makeDeliveryRequest" name="makeDeliveryRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:makeDeliveryResponse" name="makeDeliveryResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDeliveries">
+
+         <wsdl:input message="impl:getDeliveriesRequest" name="getDeliveriesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getDeliveriesResponse" name="getDeliveriesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="LogisticsServiceSoapBinding" type="impl:LogisticsService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getDeliveriesToDeliver">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getDeliveriesToDeliverRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getDeliveriesToDeliverResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDeliveryByOrderId">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getDeliveryByOrderIdRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getDeliveryByOrderIdResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="insertDelivery">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="insertDeliveryRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="insertDeliveryResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDeliveryById">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getDeliveryByIdRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getDeliveryByIdResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteDelivery">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteDeliveryRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteDeliveryResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="makeDelivery">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="makeDeliveryRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="makeDeliveryResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDeliveries">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getDeliveriesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getDeliveriesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="LogisticsServiceService">
+
+      <wsdl:port binding="impl:LogisticsServiceSoapBinding" name="LogisticsService">
+
+         <wsdlsoap:address location="http://localhost:8080/Logistics/services/LogisticsService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,132 @@
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Trabalho final de EC108 - Logistica Sanoj</title>
+</head>
+<body>
+
+<h1>Trabalho final de EC108 - Logistica Sanoj</h1>
+
+<p>You'll find below the operations and it's descriptions in both SOA and REST.</p>
+<p>In order to access the operations, you'll have to use an address like this:  http://localhost:8080/LogisticaJonas + operationName/{parameter - if exists} after you deploy the project.</b>
+
+<h2>SOAP Operations</h2>
+
+<ul>
+<li>getDeliveries - Returns all deliveries.</li>
+<li>getDeliveriesToDeliver - Returns the deliveries to be delivered.</li>
+<li>getDeliveryById - Returns the deliveries by ID.</li>
+<li>getDeliveryByOrderId - Returns the delivery by Sales Order ID.</li>
+<li>insertDelivery - Add a new delivery with Sales Order ID and CRM Client ID.</li>
+<li>makeDelivery - Register a delivery performed with the delivery informations.</li>
+<li>deleteDelivery - Delete a delivery from the database.</li>
+</ul>
+
+
+<h2>REST Operations</h2>
+
+
+<table border="1" cellpadding="5%">
+<tr>
+	<th>Service</th>
+	<th>Address</th>
+	<th>Method</th>
+
+	<th>Content Body</th>
+	
+</tr>
+<tr>
+	<td>Get All Deliveries</td>
+	<td><a href="">api/delivery</a></td>
+	<td>GET</td>
+	
+	<td>NONE</td>
+	
+</tr>
+<tr>
+	<td>Get All Deliveries To Deliver</td>
+	<td><a href="">api/delivery/toDeliver</a></td>
+	<td>GET</td>
+	
+	<td>NONE</td>
+	
+</tr>
+<tr>
+	<td>Get Delivery By ID</td>
+	<td><a href="">api/delivery/1</a></td>
+	<td>GET</td>
+	
+	<td>NONE</td>
+	
+</tr>
+<tr>
+	<td>Get Delivery By Order ID</td>
+	<td><a href="">api/delivery/byOrderID/1</a></td>
+	<td>GET</td>
+	
+	<td>NONE</td>
+	
+</tr>
+<tr>
+	<td>Perform Delivery</td>
+	<td><a href="">api/delivery/performDelivery/1</a></td>
+	<td>PUT</td>
+	
+	<td>
+		{ <br/>
+		"rName": "NOME DO RECEBEDOR", <br/>
+		"rCPF": "07896789087", <br/>
+		"isClient": "true", <br/>
+		"deliveredTime": "2013-12-12T14:31:16-02:00", <br/>
+		"deliveredLatitude": "66.0", <br/>
+		"deliveredLongitude": "66.0" <br/>			
+		}
+	</td>
+	
+</tr>
+<tr>
+	<td>Add Delivery</td>
+	<td><a href="">api/delivery</a></td>
+	<td>POST</td>
+	
+	<td>
+		{ <br/>
+		"orderID": "10", <br/>
+		"clientID": "1" <br/>
+		}
+	</td>
+
+</tr>
+<tr>
+	<td>Delete Delivery</td>
+	<td><a href="">api/delivery/1</a></td>
+	<td>DELETE</td>
+	
+	<td>NONE</td>
+</tr>
+
+</table>
+
+<br/>
+
+<h2>Database Description</h2>
+
+<p>This is the database Delivery, that is used in this project.</p>
+CREATE TABLE IF NOT EXISTS `delivery` (<br/>
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,<br/>
+  `orderID` bigint(20) NOT NULL,<br/>
+  `clientID` bigint(20) NOT NULL,<br/>
+  `rName` varchar(100) DEFAULT NULL,<br/>
+  `rCPF` varchar(12) DEFAULT NULL,<br/>
+  `isClient` tinyint(1) DEFAULT NULL,<br/>
+  `deliveredTime` timestamp NULL DEFAULT NULL,<br/>
+  `deliveredLatitude` varchar(60) DEFAULT NULL,<br/>
+  `deliveredLongitude` varchar(60) DEFAULT NULL,<br/>
+  `status` varchar(50) DEFAULT NULL,<br/>
+  PRIMARY KEY (`id`)<br/>
+)
+</body>
+<h2>Remark</h2>
+<p>As I don't have a Sales Service available online, I used the Andre Pires's one. Andre guided me during the project development.</p>
+<p>It was so so hard to accomplish! God bless you during the correction!</p>
+</html>

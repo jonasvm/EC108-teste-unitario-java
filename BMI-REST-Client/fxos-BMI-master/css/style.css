@@ -1,0 +1,45 @@
+/* YOUR CSS Here! */
+
+.content {
+  overflow: hidden;
+}
+
+.content form,
+.bottom,
+.result-box {
+	margin-top: 20px;
+}
+
+.bottom {
+	clear: both;
+	overflow: auto;
+}
+
+.bottom input {
+	width: 80%;
+	float: left;
+}
+
+.bottom button {
+	width: 19%;
+	float: right;
+}
+
+.result-box {
+	border: 1px solid #ccc;
+}
+
+.result-box h1 {
+	margin: 5px 0 0 20px;
+	font-size: 2rem;
+}
+
+.result-box div {
+	text-align: center;
+	font-size: 2rem;
+}
+
+.result-box .result {
+	font-size: 5rem;
+	margin-top: 0; 
+}

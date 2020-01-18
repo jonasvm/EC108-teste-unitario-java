@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="LogisticsServices" resourceRoot="" soapui-version="4.6.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="LogisticsServiceSoapBinding" type="wsdl" bindingName="{http://soap.logistics.alps.soa.inatel.edu.br}LogisticsServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/Logistics/services/LogisticsService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/Logistics/services/LogisticsService?wsdl"><con:part><con:url>http://localhost:8080/Logistics/services/LogisticsService?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://soap.logistics.alps.soa.inatel.edu.br" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://soap.logistics.alps.soa.inatel.edu.br" xmlns:intf="http://soap.logistics.alps.soa.inatel.edu.br" xmlns:tns1="http://model.logistics.alps.soa.inatel.edu.br" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+  <wsdl:types>
+    <schema elementFormDefault="qualified" targetNamespace="http://soap.logistics.alps.soa.inatel.edu.br" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://model.logistics.alps.soa.inatel.edu.br"/>
+      <element name="getDeliveriesToDeliver">
+        <complexType/>
+      </element>
+      <element name="getDeliveriesToDeliverResponse">
+        <complexType>
+          <sequence>
+            <element maxOccurs="unbounded" name="getDeliveriesToDeliverReturn" type="tns1:Delivery"/>
+          </sequence>
+        </complexType>
+      </element>
+      <complexType name="ArrayOf_tns1_DeliveryItem">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:DeliveryItem"/>
+        </sequence>
+      </complexType>
+      <element name="getDeliveryByOrderId">
+        <complexType>
+          <sequence>
+            <element name="orderId" type="xsd:long"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="getDeliveryByOrderIdResponse">
+        <complexType>
+          <sequence>
+            <element name="getDeliveryByOrderIdReturn" type="tns1:Delivery"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="insertDelivery">
+        <complexType>
+          <sequence>
+            <element name="orderId" type="xsd:long"/>
+            <element name="clientId" type="xsd:long"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="insertDeliveryResponse">
+        <complexType>
+          <sequence>
+            <element name="insertDeliveryReturn" type="xsd:string"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="getDeliveryById">
+        <complexType>
+          <sequence>
+            <element name="deliveryId" type="xsd:long"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="getDeliveryByIdResponse">
+        <complexType>
+          <sequence>
+            <element name="getDeliveryByIdReturn" type="tns1:Delivery"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="deleteDelivery">
+        <complexType>
+          <sequence>
+            <element name="deliveryId" type="xsd:long"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="deleteDeliveryResponse">
+        <complexType>
+          <sequence>
+            <element name="deleteDeliveryReturn" type="xsd:string"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="makeDelivery">
+        <complexType>
+          <sequence>
+            <element name="deliveryId" type="xsd:long"/>
+            <element name="receiverName" type="xsd:string"/>
+            <element name="receiverCpf" type="xsd:string"/>
+            <element name="isClientReceiver" type="xsd:boolean"/>
+            <element name="deliveryMadeTime" type="xsd:dateTime"/>
+            <element name="deliveryMadeLatitude" type="xsd:double"/>
+            <element name="deliveryMadeLongitude" type="xsd:double"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="makeDeliveryResponse">
+        <complexType>
+          <sequence>
+            <element name="makeDeliveryReturn" type="xsd:string"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="getDeliveries">
+        <complexType/>
+      </element>
+      <element name="getDeliveriesResponse">
+        <complexType>
+          <sequence>
+            <element maxOccurs="unbounded" name="getDeliveriesReturn" type="tns1:Delivery"/>
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://model.logistics.alps.soa.inatel.edu.br" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://soap.logistics.alps.soa.inatel.edu.br"/>
+      <complexType name="DeliveryItem">
+        <sequence>
+          <element name="code" nillable="true" type="xsd:string"/>
+          <element name="color" nillable="true" type="xsd:string"/>
+          <element name="model" nillable="true" type="xsd:string"/>
+          <element name="name" nillable="true" type="xsd:string"/>
+          <element name="productId" nillable="true" type="xsd:long"/>
+          <element name="quantity" nillable="true" type="xsd:double"/>
+        </sequence>
+      </complexType>
+      <complexType name="Delivery">
+        <sequence>
+          <element name="clientAddress" nillable="true" type="xsd:string"/>
+          <element name="clientCPF" nillable="true" type="xsd:string"/>
+          <element name="clientCity" nillable="true" type="xsd:string"/>
+          <element name="clientCountry" nillable="true" type="xsd:string"/>
+          <element name="clientId" nillable="true" type="xsd:long"/>
+          <element name="clientName" nillable="true" type="xsd:string"/>
+          <element name="clientState" nillable="true" type="xsd:string"/>
+          <element name="clientZip" nillable="true" type="xsd:string"/>
+          <element name="deliveryItem" nillable="true" type="impl:ArrayOf_tns1_DeliveryItem"/>
+          <element name="deliveryMadeLatitude" nillable="true" type="xsd:double"/>
+          <element name="deliveryMadeLongitude" nillable="true" type="xsd:double"/>
+          <element name="deliveryMadeTime" nillable="true" type="xsd:dateTime"/>
+          <element name="id" nillable="true" type="xsd:long"/>
+          <element name="isClientReceiver" nillable="true" type="xsd:boolean"/>
+          <element name="orderDeliveryDate" nillable="true" type="xsd:dateTime"/>
+          <element name="orderId" nillable="true" type="xsd:long"/>
+          <element name="orderNumber" nillable="true" type="xsd:int"/>
+          <element name="receiverCpf" nillable="true" type="xsd:string"/>
+          <element name="receiverName" nillable="true" type="xsd:string"/>
+          <element name="status" nillable="true" type="xsd:string"/>
+        </sequence>
+      </complexType>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="getDeliveryByOrderIdRequest">
+    <wsdl:part element="impl:getDeliveryByOrderId" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteDeliveryRequest">
+    <wsdl:part element="impl:deleteDelivery" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDeliveryByIdRequest">
+    <wsdl:part element="impl:getDeliveryById" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDeliveriesResponse">
+    <wsdl:part element="impl:getDeliveriesResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="makeDeliveryRequest">
+    <wsdl:part element="impl:makeDelivery" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="makeDeliveryResponse">
+    <wsdl:part element="impl:makeDeliveryResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDeliveryByIdResponse">
+    <wsdl:part element="impl:getDeliveryByIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDeliveriesToDeliverRequest">
+    <wsdl:part element="impl:getDeliveriesToDeliver" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertDeliveryRequest">
+    <wsdl:part element="impl:insertDelivery" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertDeliveryResponse">
+    <wsdl:part element="impl:insertDeliveryResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDeliveriesRequest">
+    <wsdl:part element="impl:getDeliveries" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteDeliveryResponse">
+    <wsdl:part element="impl:deleteDeliveryResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDeliveriesToDeliverResponse">
+    <wsdl:part element="impl:getDeliveriesToDeliverResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDeliveryByOrderIdResponse">
+    <wsdl:part element="impl:getDeliveryByOrderIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="LogisticsService">
+    <wsdl:operation name="getDeliveriesToDeliver">
+      <wsdl:input message="impl:getDeliveriesToDeliverRequest" name="getDeliveriesToDeliverRequest"></wsdl:input>
+      <wsdl:output message="impl:getDeliveriesToDeliverResponse" name="getDeliveriesToDeliverResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDeliveryByOrderId">
+      <wsdl:input message="impl:getDeliveryByOrderIdRequest" name="getDeliveryByOrderIdRequest"></wsdl:input>
+      <wsdl:output message="impl:getDeliveryByOrderIdResponse" name="getDeliveryByOrderIdResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertDelivery">
+      <wsdl:input message="impl:insertDeliveryRequest" name="insertDeliveryRequest"></wsdl:input>
+      <wsdl:output message="impl:insertDeliveryResponse" name="insertDeliveryResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDeliveryById">
+      <wsdl:input message="impl:getDeliveryByIdRequest" name="getDeliveryByIdRequest"></wsdl:input>
+      <wsdl:output message="impl:getDeliveryByIdResponse" name="getDeliveryByIdResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteDelivery">
+      <wsdl:input message="impl:deleteDeliveryRequest" name="deleteDeliveryRequest"></wsdl:input>
+      <wsdl:output message="impl:deleteDeliveryResponse" name="deleteDeliveryResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="makeDelivery">
+      <wsdl:input message="impl:makeDeliveryRequest" name="makeDeliveryRequest"></wsdl:input>
+      <wsdl:output message="impl:makeDeliveryResponse" name="makeDeliveryResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDeliveries">
+      <wsdl:input message="impl:getDeliveriesRequest" name="getDeliveriesRequest"></wsdl:input>
+      <wsdl:output message="impl:getDeliveriesResponse" name="getDeliveriesResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LogisticsServiceSoapBinding" type="impl:LogisticsService">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getDeliveriesToDeliver">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getDeliveriesToDeliverRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDeliveriesToDeliverResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDeliveryByOrderId">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getDeliveryByOrderIdRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDeliveryByOrderIdResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertDelivery">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="insertDeliveryRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="insertDeliveryResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDeliveryById">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getDeliveryByIdRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDeliveryByIdResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteDelivery">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="deleteDeliveryRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteDeliveryResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="makeDelivery">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="makeDeliveryRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="makeDeliveryResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDeliveries">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getDeliveriesRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDeliveriesResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LogisticsServiceService">
+    <wsdl:port binding="impl:LogisticsServiceSoapBinding" name="LogisticsService">
+      <wsdlsoap:address location="http://localhost:8080/Logistics/services/LogisticsService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/Logistics/services/LogisticsService</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="deleteDelivery" bindingOperationName="deleteDelivery" type="Request-Response" outputName="deleteDeliveryResponse" inputName="deleteDeliveryRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Logistics/services/LogisticsService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.logistics.alps.soa.inatel.edu.br">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <soap:deleteDelivery>
+         <soap:deliveryId>?</soap:deliveryId>
+      </soap:deleteDelivery>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.logistics.alps.soa.inatel.edu.br/LogisticsService/deleteDeliveryRequest"/></con:call></con:operation><con:operation isOneWay="false" action="" name="getDeliveries" bindingOperationName="getDeliveries" type="Request-Response" outputName="getDeliveriesResponse" inputName="getDeliveriesRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Logistics/services/LogisticsService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.logistics.alps.soa.inatel.edu.br">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <soap:getDeliveries/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.logistics.alps.soa.inatel.edu.br/LogisticsService/getDeliveriesRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="getDeliveriesToDeliver" bindingOperationName="getDeliveriesToDeliver" type="Request-Response" outputName="getDeliveriesToDeliverResponse" inputName="getDeliveriesToDeliverRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Logistics/services/LogisticsService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.logistics.alps.soa.inatel.edu.br">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <soap:getDeliveriesToDeliver/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.logistics.alps.soa.inatel.edu.br/LogisticsService/getDeliveriesToDeliverRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="getDeliveryById" bindingOperationName="getDeliveryById" type="Request-Response" outputName="getDeliveryByIdResponse" inputName="getDeliveryByIdRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Logistics/services/LogisticsService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.logistics.alps.soa.inatel.edu.br">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <soap:getDeliveryById>
+         <soap:deliveryId>9</soap:deliveryId>
+      </soap:getDeliveryById>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.logistics.alps.soa.inatel.edu.br/LogisticsService/getDeliveryByIdRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="getDeliveryByOrderId" bindingOperationName="getDeliveryByOrderId" type="Request-Response" outputName="getDeliveryByOrderIdResponse" inputName="getDeliveryByOrderIdRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Logistics/services/LogisticsService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.logistics.alps.soa.inatel.edu.br">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <soap:getDeliveryByOrderId>
+         <soap:orderId>10</soap:orderId>
+      </soap:getDeliveryByOrderId>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.logistics.alps.soa.inatel.edu.br/LogisticsService/getDeliveryByOrderIdRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="insertDelivery" bindingOperationName="insertDelivery" type="Request-Response" outputName="insertDeliveryResponse" inputName="insertDeliveryRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Logistics/services/LogisticsService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.logistics.alps.soa.inatel.edu.br">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <soap:insertDelivery>
+         <soap:orderId>9</soap:orderId>
+         <soap:clientId>2</soap:clientId>
+      </soap:insertDelivery>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.logistics.alps.soa.inatel.edu.br/LogisticsService/insertDeliveryRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="makeDelivery" bindingOperationName="makeDelivery" type="Request-Response" outputName="makeDeliveryResponse" inputName="makeDeliveryRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/Logistics/services/LogisticsService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.logistics.alps.soa.inatel.edu.br">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <soap:makeDelivery>
+         <soap:deliveryId>9</soap:deliveryId>
+         <soap:receiverName>ANDRE FINAL 2</soap:receiverName>
+         <soap:receiverCpf>CPF_FINAL-2</soap:receiverCpf>
+         <soap:isClientReceiver>true</soap:isClientReceiver>
+         <soap:deliveryMadeTime>2013-12-12T14:31:22-02:00</soap:deliveryMadeTime>
+         <soap:deliveryMadeLatitude>22</soap:deliveryMadeLatitude>
+         <soap:deliveryMadeLongitude>22</soap:deliveryMadeLongitude>
+      </soap:makeDelivery>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.logistics.alps.soa.inatel.edu.br/LogisticsService/makeDeliveryRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/></con:soapui-project>

@@ -1,0 +1,75 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from LogisticsServiceService WSDL service -->
+
+  <service name="LogisticsService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://soap.logistics.alps.soa.inatel.edu.br"/>
+      <parameter name="wsdlServiceElement" value="LogisticsServiceService"/>
+      <parameter name="schemaQualified" value="http://soap.logistics.alps.soa.inatel.edu.br,http://model.logistics.alps.soa.inatel.edu.br"/>
+      <parameter name="wsdlServicePort" value="LogisticsService"/>
+      <parameter name="className" value="br.edu.inatel.soa.alps.logistics.soap.LogisticsServiceSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="LogisticsService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getDeliveriesToDeliver" qname="operNS:getDeliveriesToDeliver" xmlns:operNS="http://soap.logistics.alps.soa.inatel.edu.br" returnQName="retNS:getDeliveriesToDeliverReturn" xmlns:retNS="http://soap.logistics.alps.soa.inatel.edu.br" returnType="rtns:Delivery" xmlns:rtns="http://model.logistics.alps.soa.inatel.edu.br" soapAction="" >
+      </operation>
+      <operation name="getDeliveryByOrderId" qname="operNS:getDeliveryByOrderId" xmlns:operNS="http://soap.logistics.alps.soa.inatel.edu.br" returnQName="retNS:getDeliveryByOrderIdReturn" xmlns:retNS="http://soap.logistics.alps.soa.inatel.edu.br" returnType="rtns:Delivery" xmlns:rtns="http://model.logistics.alps.soa.inatel.edu.br" soapAction="" >
+        <parameter qname="pns:orderId" xmlns:pns="http://soap.logistics.alps.soa.inatel.edu.br" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="insertDelivery" qname="operNS:insertDelivery" xmlns:operNS="http://soap.logistics.alps.soa.inatel.edu.br" returnQName="retNS:insertDeliveryReturn" xmlns:retNS="http://soap.logistics.alps.soa.inatel.edu.br" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:orderId" xmlns:pns="http://soap.logistics.alps.soa.inatel.edu.br" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:clientId" xmlns:pns="http://soap.logistics.alps.soa.inatel.edu.br" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getDeliveryById" qname="operNS:getDeliveryById" xmlns:operNS="http://soap.logistics.alps.soa.inatel.edu.br" returnQName="retNS:getDeliveryByIdReturn" xmlns:retNS="http://soap.logistics.alps.soa.inatel.edu.br" returnType="rtns:Delivery" xmlns:rtns="http://model.logistics.alps.soa.inatel.edu.br" soapAction="" >
+        <parameter qname="pns:deliveryId" xmlns:pns="http://soap.logistics.alps.soa.inatel.edu.br" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="deleteDelivery" qname="operNS:deleteDelivery" xmlns:operNS="http://soap.logistics.alps.soa.inatel.edu.br" returnQName="retNS:deleteDeliveryReturn" xmlns:retNS="http://soap.logistics.alps.soa.inatel.edu.br" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:deliveryId" xmlns:pns="http://soap.logistics.alps.soa.inatel.edu.br" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="makeDelivery" qname="operNS:makeDelivery" xmlns:operNS="http://soap.logistics.alps.soa.inatel.edu.br" returnQName="retNS:makeDeliveryReturn" xmlns:retNS="http://soap.logistics.alps.soa.inatel.edu.br" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:deliveryId" xmlns:pns="http://soap.logistics.alps.soa.inatel.edu.br" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:receiverName" xmlns:pns="http://soap.logistics.alps.soa.inatel.edu.br" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:receiverCpf" xmlns:pns="http://soap.logistics.alps.soa.inatel.edu.br" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:isClientReceiver" xmlns:pns="http://soap.logistics.alps.soa.inatel.edu.br" type="tns:boolean" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:deliveryMadeTime" xmlns:pns="http://soap.logistics.alps.soa.inatel.edu.br" type="tns:dateTime" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:deliveryMadeLatitude" xmlns:pns="http://soap.logistics.alps.soa.inatel.edu.br" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:deliveryMadeLongitude" xmlns:pns="http://soap.logistics.alps.soa.inatel.edu.br" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getDeliveries" qname="operNS:getDeliveries" xmlns:operNS="http://soap.logistics.alps.soa.inatel.edu.br" returnQName="retNS:getDeliveriesReturn" xmlns:retNS="http://soap.logistics.alps.soa.inatel.edu.br" returnType="rtns:Delivery" xmlns:rtns="http://model.logistics.alps.soa.inatel.edu.br" soapAction="" >
+      </operation>
+      <parameter name="allowedMethods" value="getDeliveryById getDeliveryByOrderId getDeliveries makeDelivery insertDelivery getDeliveriesToDeliver deleteDelivery"/>
+
+      <typeMapping
+        xmlns:ns="http://model.logistics.alps.soa.inatel.edu.br"
+        qname="ns:DeliveryItem"
+        type="java:br.edu.inatel.soa.alps.logistics.model.DeliveryItem"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://model.logistics.alps.soa.inatel.edu.br"
+        qname="ns:Delivery"
+        type="java:br.edu.inatel.soa.alps.logistics.model.Delivery"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://soap.logistics.alps.soa.inatel.edu.br"
+        qname="ns:ArrayOf_tns1_DeliveryItem"
+        type="java:br.edu.inatel.soa.alps.logistics.model.DeliveryItem[]"
+        innerType="cmp-ns:DeliveryItem" xmlns:cmp-ns="http://model.logistics.alps.soa.inatel.edu.br"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

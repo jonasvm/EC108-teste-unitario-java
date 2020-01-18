@@ -1,0 +1,89 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="C:\Users\sanoj\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\LogisticaJonas\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:service name="LogisticService" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="makeDelivery" qname="ns1:makeDelivery" returnQName="ns1:makeDeliveryReturn" returnType="xsd:string" soapAction="" xmlns:ns1="http://soap.logisticasanoj.soa.inatel.edu.br" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns2:parameter qname="ns1:deliveryID" type="xsd:long"/>
+   <ns2:parameter qname="ns1:rName" type="xsd:string"/>
+   <ns2:parameter qname="ns1:rCPF" type="xsd:string"/>
+   <ns2:parameter qname="ns1:isClient" type="xsd:boolean"/>
+   <ns2:parameter qname="ns1:deliveredTime" type="xsd:dateTime"/>
+   <ns2:parameter qname="ns1:deliveredLatitude" type="xsd:double"/>
+   <ns2:parameter qname="ns1:deliveredLongitude" type="xsd:double"/>
+  </ns2:operation>
+  <ns1:operation name="getDeliveries" qname="ns2:getDeliveries" returnQName="ns2:getDeliveriesReturn" returnType="ns3:Delivery" soapAction="" xmlns:ns2="http://soap.logisticasanoj.soa.inatel.edu.br" xmlns:ns3="http://model.logisticasanoj.soa.inatel.edu.br"/>
+  <ns1:operation name="getDeliveriesToDeliver" qname="ns4:getDeliveriesToDeliver" returnQName="ns4:getDeliveriesToDeliverReturn" returnType="ns5:Delivery" soapAction="" xmlns:ns4="http://soap.logisticasanoj.soa.inatel.edu.br" xmlns:ns5="http://model.logisticasanoj.soa.inatel.edu.br"/>
+  <ns1:operation name="deleteDelivery" qname="ns6:deleteDelivery" returnQName="ns6:deleteDeliveryReturn" returnType="xsd:string" soapAction="" xmlns:ns6="http://soap.logisticasanoj.soa.inatel.edu.br" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns6:deliveryID" type="xsd:long"/>
+  </ns1:operation>
+  <ns1:operation name="insertDelivery" qname="ns7:insertDelivery" returnQName="ns7:insertDeliveryReturn" returnType="xsd:string" soapAction="" xmlns:ns7="http://soap.logisticasanoj.soa.inatel.edu.br" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns7:orderID" type="xsd:long"/>
+   <ns1:parameter qname="ns7:clientID" type="xsd:long"/>
+  </ns1:operation>
+  <ns1:operation name="getDeliveryById" qname="ns8:getDeliveryById" returnQName="ns8:getDeliveryByIdReturn" returnType="ns9:Delivery" soapAction="" xmlns:ns8="http://soap.logisticasanoj.soa.inatel.edu.br" xmlns:ns9="http://model.logisticasanoj.soa.inatel.edu.br">
+   <ns1:parameter qname="ns8:deliveryID" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="getDeliveryByOrderId" qname="ns10:getDeliveryByOrderId" returnQName="ns10:getDeliveryByOrderIdReturn" returnType="ns11:Delivery" soapAction="" xmlns:ns10="http://soap.logisticasanoj.soa.inatel.edu.br" xmlns:ns11="http://model.logisticasanoj.soa.inatel.edu.br">
+   <ns1:parameter qname="ns10:orderID" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="getDeliveryByOrderId getDeliveryById getDeliveries insertDelivery makeDelivery getDeliveriesToDeliver deleteDelivery"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="LogisticService"/>
+  <ns1:parameter name="className" value="br.edu.inatel.soa.logisticasanoj.soap.LogisticService"/>
+  <ns1:parameter name="wsdlServicePort" value="LogisticService"/>
+  <ns1:parameter name="schemaQualified" value="http://model.logisticasanoj.soa.inatel.edu.br,http://soap.logisticasanoj.soa.inatel.edu.br"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://soap.logisticasanoj.soa.inatel.edu.br"/>
+  <ns1:parameter name="wsdlServiceElement" value="LogisticServiceService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns12:DeliveryItem" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:br.edu.inatel.soa.logisticasanoj.model.DeliveryItem" xmlns:ns12="http://model.logisticasanoj.soa.inatel.edu.br"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns13:Delivery" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:br.edu.inatel.soa.logisticasanoj.model.Delivery" xmlns:ns13="http://model.logisticasanoj.soa.inatel.edu.br"/>
+  <ns1:arrayMapping innerType="ns15:DeliveryItem" languageSpecificType="java:br.edu.inatel.soa.logisticasanoj.model.DeliveryItem[]" qname="ns14:ArrayOf_tns1_DeliveryItem" xmlns:ns14="http://soap.logisticasanoj.soa.inatel.edu.br" xmlns:ns15="http://model.logisticasanoj.soa.inatel.edu.br"/>
+ </ns1:service>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>
